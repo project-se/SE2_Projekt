@@ -1,0 +1,36 @@
+package testArticle;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.List;
+import java.util.regex.Pattern;
+
+public class ArticleList {
+	private List<Article> al;
+	
+	ArticleList(File f) throws IOException{
+		f.setWritable(true);
+		f.setReadable(true);
+	    FileReader fr = new FileReader(f.getPath());
+	    BufferedReader br = new BufferedReader(fr);
+	    String[] segs1 = br.readLine().split( Pattern.quote( "+" ) );
+	    br.close();
+
+	    for(int i = 0; i < segs1.length; i++){
+	    	System.out.println(segs1[i]+"\n");
+	    	Article a = new Article(segs1[i]);
+	    	al.add(a);
+	    }
+	}
+	
+	public List<Article> getArticleList(){
+		return al;
+	}
+	
+	public boolean setArticleList(List<Article> articleList){
+		al = articleList;
+		return true;
+	}
+}
