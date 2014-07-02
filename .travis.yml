@@ -4,6 +4,8 @@ branches:
     - master
 install: echo 'Skipping mvn install' 
 script: mvn clean test -U
+jdk:
+    - openjdk7
 notifications:
     on_success: never
     on_failure: always
